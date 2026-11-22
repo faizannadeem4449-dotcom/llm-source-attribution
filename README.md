@@ -58,8 +58,7 @@ The corpus consists of **9,719 labeled synthetic generations** across multiple c
 
 | Class Distribution Across Models | Multi-Class Confusion Matrix |
 | :---: | :---: |
-| <img src="class_distribution.png" width="430"/> | <img src="confusion_matrix.png" width="430"/> |
-
+| <img src="class_distribution.png.png" width="430"/> | <img src="confusion_matrix.png.png" width="430"/> |
 ---
 
 ## Quantitative Findings & Error Analysis

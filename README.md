@@ -9,7 +9,27 @@ An end-to-end supervised Natural Language Processing (NLP) and Machine Learning 
 
 ---
 
-## Architecture & Methodology
+## Pipeline Architecture
+
+```mermaid
+flowchart LR
+    A["Raw Corpus (9,719 Samples)"] --> B["Stratified Split (80% / 20%)"]
+    B --> C["Sublinear TF-IDF (15,000 Features)"]
+    C --> D["Logistic Regression (Balanced)"]
+    D --> E["Evaluation (33.49% Accuracy)"]
+```
+
+---
+
+## Visual Results
+
+| Class Distribution | Confusion Matrix |
+| :---: | :---: |
+| <img src="class_distribution.png" width="420"/> | <img src="confusion_matrix.png" width="420"/> |
+
+---
+
+## Methodology & Implementation
 
 | Pipeline Stage | Implementation Details |
 | :--- | :--- |
@@ -23,7 +43,7 @@ An end-to-end supervised Natural Language Processing (NLP) and Machine Learning 
 
 ## Experimental Results
 * **Test Accuracy:** **33.49%** across multi-class LLM variants (outperforming the random-chance baseline on fine-grained same-family model variants).
-* **Key Insight:** Stylometric n-gram features effectively separate distinct model generations, whereas closely related model checkpoints exhibit overlapping lexical distributions—visualized in the confusion matrix inside the notebook.
+* **Key Insight:** Stylometric n-gram features effectively separate distinct model generations, whereas closely related model checkpoints exhibit overlapping lexical distributions—visualized in the confusion matrix above.
 
 ---
 
@@ -34,9 +54,18 @@ llm-source-attribution/
 ├── llm_attribution_pipeline.ipynb   # Exploratory analysis, TF-IDF vectorization, training & confusion matrix
 ├── ai_responses.parquet             # Primary labeled text corpus (9,719 samples)
 ├── ai_prompts.jsonl                 # Associated prompt registry metadata
+├── class_distribution.png           # Dataset class balance chart
+├── confusion_matrix.png             # Model classification performance heatmap
 ├── requirements.txt                 # Reproducible Python environment dependencies
 ├── LICENSE                          # MIT open-source license
 └── README.md                        # Project documentation and experimental findings
+```
+
+---
+
+## How to Run Locally
+
+```bash
 # 1. Clone the repository
 git clone [https://github.com/faizannadeem4449-dotcom/llm-source-attribution.git](https://github.com/faizannadeem4449-dotcom/llm-source-attribution.git)
 cd llm-source-attribution
@@ -46,6 +75,4 @@ pip install -r requirements.txt
 
 # 3. Launch Jupyter Notebook
 jupyter notebook llm_attribution_pipeline.ipynb
-2. **Save your changes:** Once pasted, the green **Commit changes...** button in the top-right corner will light up[cite: 12]. Click **Commit changes...** $\rightarrow$ **Commit changes**.
-
-3. **Final check before submitting:** Open `[https://github.com/faizannadeem4449-dotcom/llm-source-attribution](https://github.com/faizannadeem4449-dotcom/llm-source-attribution)` in a **New Incognito Window** (`Ctrl + Shift + N`) to confirm all 6 files (`README.md`, `LICENSE`, `requirements.txt`, `llm_attribution_pipeline.ipynb`, `ai_responses.parquet`, and `ai_prompts.jsonl`), your topic badges, and your formatted table display cleanly without logging in[cite: 7, 9, 11, 12]. Your repository is then ready to present to your instructor.
+```
